@@ -60,11 +60,10 @@ router.post('/login', async (req, res) => {
 
         // JWT 발급
         const payload = {
-            id: user._id,
-            login_id: user.login_id
+            id: user._id
         };
 
-        const token = jwt.sign(payload, jwtSecret, { expiresIn: '1d' });
+        const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
 
         res.json({
             message: '로그인 성공',
