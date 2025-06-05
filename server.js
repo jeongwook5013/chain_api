@@ -29,10 +29,12 @@ mongoose.connect(mongoUri)
 const userservice = require('./service/user.service');
 const oauthservice = require('./service/genesis.service');
 const carservice = require('./service/car.service');
+const carListService = require('./service/carList.service');
 
 app.use('/api/users', userservice);
 app.use('/oauth', oauthservice);
 app.use('/api/car', carservice);
+app.use('/api/carlist', carListService);
 
 // 서버 실행
 app.listen(PORT, () => {
