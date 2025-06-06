@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: false },
 
     // OAuth 사용자 정보
-    oauth_provider: { type: String, enum: ['genesis', 'hyundai', null], default: null },
+    oauth_provider: { type: String, enum: ['genesis', 'hyundai', 'google', null], default: null },
     oauth_id: { type: String, required: false },
 
     // 차량 정보 및 지갑 정보

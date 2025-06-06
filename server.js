@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const User = require('./models/user.model');
 require('dotenv').config();
 
 const app = express();
@@ -20,19 +21,26 @@ if (!mongoUri) {
   process.exit(1);
 }
 
-
 mongoose.connect(mongoUri)
   .then(() => console.log('✅ MongoDB 연결 성공'))
   .catch(err => console.error('❌ MongoDB 연결 실패:', err));
 
 // 라우터 연결
-const userservice = require('./service/user.service');
+const userservice = require('./service/user.service'); // ✅ 올바른 경로
 const oauthservice = require('./service/genesis.service');
 const carservice = require('./service/car.service');
+const carroutes = require('./routes/car.routes');
+const walletrouter = require('./routes/wallet.route');
+
+
 
 app.use('/api/users', userservice);
 app.use('/oauth', oauthservice);
-app.use('/api/car', carservice);
+app.use('/api/car', carservice);       // 기존 car service 라우터
+app.use('/api/car', carroutes);        // ✅ 새로 만든 car.routes.js 라우터 (겹치지 않으면 둘 다 사용 가능)
+app.use('/api/wallet', walletrouter);
+app.use('/uploads', express.static('uploads')); // 이미지 정적 경로
+
 
 // 서버 실행
 app.listen(PORT, () => {
