@@ -33,6 +33,7 @@ const carroutes = require('./routes/car.routes');
 const walletrouter = require('./routes/wallet.route');
 
 
+const carListService = require('./service/carList.service');
 
 app.use('/api/users', userservice);
 app.use('/oauth', oauthservice);
@@ -41,6 +42,7 @@ app.use('/api/car', carroutes);        // ✅ 새로 만든 car.routes.js 라우
 app.use('/api/wallet', walletrouter);
 app.use('/uploads', express.static('uploads')); // 이미지 정적 경로
 
+app.use('/api/carlist', carListService);
 
 // 서버 실행
 app.listen(PORT, () => {

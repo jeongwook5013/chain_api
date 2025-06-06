@@ -3,9 +3,9 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
-const Car = require('../models/car.model');
-const User = require('../models/user.model');
-const Counter = require('../models/counter.model');
+const Car = require('../models/tb_car.model');
+const User = require('../models/tb_user.model');
+const Counter = require('../models/tb_counter.model');
 const authenticateToken = require('../middleware/auth'); // JWT 인증 미들웨어
 
 // 🔸 multer 설정
