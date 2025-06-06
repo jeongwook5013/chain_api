@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authenticateToken = require('../middleware/auth');
-const Car = require('../models/car.model');
+const Car = require('../models/tb_car.model');
 
 router.get('/mycars', authenticateToken, async (req, res) => {
   try {
